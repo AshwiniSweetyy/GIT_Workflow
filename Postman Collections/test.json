@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "cc8f8d6b-7b39-4fa1-b84f-96be5c95474d",
+		"name": "Workflow Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Details of particular page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07ce24c2-257d-4d27-a4d4-b2f88c19865d",
+						"exec": [
+							"//validating Response status code\r",
+							"pm.test(\"Status Code is 200\",function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"//validating Response status code Name\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//validating Response Header Content-Type is present\r",
+							"pm.test(\"Resonse Header Content-Type is present\", function()\r",
+							"{\r",
+							"    pm.response.to.have.header('Content-Type');\r",
+							"})\r",
+							"\r",
+							"\r",
+							"//To get status code from response\r",
+							"\r",
+							"var statusCode = pm.response.code;\r",
+							"console.log(statusCode);\r",
+							"\r",
+							"\r",
+							"//To run requests in sequence - If we want to alter running sequence\r",
+							"postman.setNextRequest('Get Request_User not found');"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "276d8d29-95c1-4148-8a7d-ae891a23cec3",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "c4b406d0-8c66-4955-8241-89bed18112d8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}api/users?page=2",
+					"host": [
+						"{{Endpoint}}api"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Details of Particular User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "468892b2-8a77-42c3-a5dc-82c7dc4c6cad",
+						"exec": [
+							"//validating Response status code\r",
+							"pm.test(\"Status code is 200\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"//validating Response status code Name\r",
+							"pm.test(\"Status code name has string OK\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"})  \r",
+							"\r",
+							"//validating Response header Content type is Present\r",
+							"pm.test(\"Response header Content-type is present\",function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"})\r",
+							"\r",
+							"\r",
+							"//validating Response header Content type value\r",
+							"pm.test(\"Content-Type header is application/json; charset=utf-8\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).eql('application/json; charset=utf-8');\r",
+							"    //   // or we can write as \r",
+							"    // pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85a277b2-f1b6-4fd1-927b-40d0b5289486",
+						"exec": [
+							"//Setting Local variable\r",
+							"//pm.variables.set(\"UserID\", \"12\");\r",
+							"\r",
+							"//Getting Local variable\r",
+							"console.log(pm.variables.get('UserID'));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "6995ba11-b6ae-49ff-8e2e-138c88ef1eef",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Endpoint}}api/users/{{UserID}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Request_Adding new user details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13b83729-3fe6-44a1-8b39-ff031d3aa90d",
+						"exec": [
+							"//validating Response status code\r",
+							"pm.test(\"Status code 201\",function()\r",
+							"{\r",
+							"    pm.response.to.have.status(201);\r",
+							"    //Or we can write as\r",
+							"    //pm.response.to.status(201);\r",
+							"})\r",
+							"\r",
+							"//validating Response status code Name\r",
+							"pm.test(\"Status Code name has string created\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"})\r",
+							"\r",
+							"//validating Response Header Content-Type is present\r",
+							"pm.test(\"Response header is having Content Type\",function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"})\r",
+							"\r",
+							"//validating Response body for particular value\r",
+							"pm.test(\"Response body is having key\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.text()).include(\"name\");\r",
+							"      // or we can write as \r",
+							"      //pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"}\r",
+							")\r",
+							"\r",
+							"//validating Response time\r",
+							"pm.test(\"Response time is less than 300\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).below(300);\r",
+							"        // or we can write as \r",
+							"        //pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"}\r",
+							")\r",
+							"\r",
+							"\r",
+							"// To stop the running sequence\r",
+							"postman.setNextRequest(null);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a37c2746-0c95-4c04-b409-1a1fed1dd487",
+						"exec": [
+							"//Setting Local variable\r",
+							"pm.variables.set(\"Myname\", \"Ashwini\");\r",
+							"\r",
+							"//Getting Local variable\r",
+							"console.log(pm.variables.get('Myname'));\r",
+							"\r",
+							"\r",
+							"//Setting Local variable\r",
+							"pm.variables.set('Myjob', 'Tester');\r",
+							"\r",
+							"//Getting Local variable\r",
+							"console.log(pm.variables.get('Myjob'))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "84112798-795d-4608-a2b8-7126eae47e5c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{Myname}}\",\r\n    \"job\": \"{{Myjob}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request_User not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4bf1ac1-4bc7-4718-a607-6ef54c3a4393",
+						"exec": [
+							"//validating Response status code\r",
+							"pm.test(\"User details not found and recieved status code 404\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(404);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"status code has text Not Found\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "af3ddb34-b84b-4d29-b74d-f6499abf1227",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "140b1a06-a59f-4dfc-b7a3-a93aa1834e1c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://reqres.in/api/users/100"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request_Updating Partiular User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a245894c-42fd-4c7d-86d7-b840306a0e10",
+						"exec": [
+							"//validating Response body for particular value\r",
+							"pm.test(\"Response Body is having value Sweety\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.text()).include(\"Sweety\"); //Pass any value which is present in response body instead of sweety \r",
+							"})\r",
+							"\r",
+							"\r",
+							"//To change the sequence of requests \r",
+							"postman.setNextRequest('Get Details of Particular User');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "fe5dac7a-ceba-4000-849f-f2d51b18c463",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sweety\",\r\n    \"job\": \"N\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users/3"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2c018fd0-6ead-40ce-8bab-c2967d274157",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a018ad18-8dbd-4e33-acc4-47ad700222d1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6c4e6e20-33e6-4d1e-896e-0ed4a941df56",
+			"key": "Endpoint",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "7c9c906b-f7cf-4360-82d1-2641dd109f3a",
+			"key": "UserID",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
