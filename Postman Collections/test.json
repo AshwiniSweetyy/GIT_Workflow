@@ -27,7 +27,7 @@
 							"//validating Response Header Content-Type is present\r",
 							"pm.test(\"Resonse Header Content-Type is present\", function()\r",
 							"{\r",
-							"    pm.response.to.have.header('Content-Type');\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"})\r",
 							"\r",
 							"\r",
@@ -54,7 +54,7 @@
 					}
 				}
 			],
-			"_postman_id": "c4b406d0-8c66-4955-8241-89bed18112d8",
+			"id": "c4b406d0-8c66-4955-8241-89bed18112d8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -135,7 +135,7 @@
 					}
 				}
 			],
-			"_postman_id": "6995ba11-b6ae-49ff-8e2e-138c88ef1eef",
+			"id": "6995ba11-b6ae-49ff-8e2e-138c88ef1eef",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -221,7 +221,7 @@
 					}
 				}
 			],
-			"_postman_id": "84112798-795d-4608-a2b8-7126eae47e5c",
+			"id": "84112798-795d-4608-a2b8-7126eae47e5c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -275,7 +275,7 @@
 					}
 				}
 			],
-			"_postman_id": "140b1a06-a59f-4dfc-b7a3-a93aa1834e1c",
+			"id": "140b1a06-a59f-4dfc-b7a3-a93aa1834e1c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -308,7 +308,7 @@
 					}
 				}
 			],
-			"_postman_id": "fe5dac7a-ceba-4000-849f-f2d51b18c463",
+			"id": "fe5dac7a-ceba-4000-849f-f2d51b18c463",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -353,14 +353,14 @@
 	],
 	"variable": [
 		{
-			"id": "6c4e6e20-33e6-4d1e-896e-0ed4a941df56",
+			"id": "5858c1f0-e294-432b-a548-901549aba140",
 			"key": "Endpoint",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "7c9c906b-f7cf-4360-82d1-2641dd109f3a",
+			"id": "b2ed43d1-817d-497e-80ce-172759c6fb91",
 			"key": "UserID",
 			"value": "",
 			"type": "string"
